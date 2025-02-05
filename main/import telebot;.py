@@ -3,7 +3,7 @@ import random
 import os
 import sqlite3
 from telebot import types
-
+11
 def check_reg_people(userid, chatid): #message.from_user.id and message.chat.id                  #есть id или нет
     with open(r"base/inf_people.txt", 'r', encoding='utf-8') as file:
         line = file.readline()        # считываем первую строку
