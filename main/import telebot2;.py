@@ -9,4 +9,4 @@ def start(message):
   btn1 = types.KeyboardBatton('Зарегистрироваться')
   btn2 = types.KeyboardBatton('Авторизоваться')
   markup.add(btn1, btn2)
-  bot.send_message(message.chat.id, 'Здравствуйте, выберете действие'
+  bot.send_message(message.chat.id, 'Здравствуйте! Выберете действие'
