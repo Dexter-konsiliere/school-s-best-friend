@@ -2,6 +2,7 @@ import telebot
 import sqlite3
 
 
+# создание таблицы
 connection = sqlite3.connect('database.db')
 cursor = connection.cursor()
 cursor.execute('CREATE TABLE IF NOT EXISTS Users (id INTEGER PRIMARU KEY, name TEXT NOT NULL, birth date TEXT NOT NULL, role TEXT NOT NULL)')
@@ -24,13 +25,15 @@ def start(message):
   markup.add(btn1, btn2)
   bot.send_message(message.chat.id, 'Здравствуйте! Выберете действие'
 
-                   
+
+# регистрация проходить при помощи одной команды и четырёх функций
 @bot.message_handler(commands=['reg'])
 def reg(message):
   bot.send_message(message.chat.id, 'Введите своё полное имя')
   bot.register_next_step_handler(message, user_name)
 
 
+# запоминаем имя пользователя
 def user_name(message):
   global name
   name = message.text.strip()
@@ -38,6 +41,7 @@ def user_name(message):
   bot.register_next_step_handler(message, user_birth_date)
 
 
+# запоминаем дату роджения
 def user_birth_date(message):
   global birth_date
   birth_date = message.text.strip()
@@ -45,6 +49,7 @@ def user_birth_date(message):
   bot.register_next_step_handler(message, user_role)
 
 
+# запоминаем роль и добавляем все данные пользователя в таблицу
 def user_role(message):
   role = message.text.strip()
   bot.send_message(message.chat.id, 'Отлично, вы зарегистрированы!')
